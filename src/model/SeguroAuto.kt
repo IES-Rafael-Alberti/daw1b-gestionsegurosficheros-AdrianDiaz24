@@ -1,3 +1,5 @@
+package model
+
 class SeguroAuto(
     numPoliza: Int,
     dniTitular: String,
@@ -19,7 +21,7 @@ class SeguroAuto(
     }
 
     override fun tipoSeguro(): String {
-        return "Seguro de Automovil"
+        return "model.Seguro de Automovil"
     }
 
 }

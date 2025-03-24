@@ -1,4 +1,4 @@
-
+package model
 enum class TipoAuto(val descripcion: String) {
 
     COCHE ("Coche"), Moto ("Moto"), CAMION ("Camion");
