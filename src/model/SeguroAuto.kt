@@ -21,7 +21,7 @@ class SeguroAuto(
     }
 
     override fun tipoSeguro(): String {
-        return "model.Seguro de Automovil"
+        return "Seguro de Automovil"
     }
 
 }
