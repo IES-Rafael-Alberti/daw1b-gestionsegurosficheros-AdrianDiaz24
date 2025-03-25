@@ -1,16 +1,22 @@
 package model
 
 class SeguroAuto(
-    numPoliza: Int,
     dniTitular: String,
-    private val importe: Double,
+    importe: Double,
     descripcion: String,
     combustible: String,
-    tipoAuto: TipoAuto,
+    tipoAuto: Auto,
     tipoCobertura: String,
     asistenciaCarretera: Boolean,
     var numPartes: Int = 0
-): Seguro(numPoliza, dniTitular, importe) {
+): Seguro(generarNumPoliza(), dniTitular, importe) {
+
+    companion object {
+        var id = 40000
+        fun generarNumPoliza(): Int{
+            return id++
+        }
+    }
 
     override fun calcuarImporteAnioSiguiente(interes: Double): Double {
         if (numPartes == 0) {
