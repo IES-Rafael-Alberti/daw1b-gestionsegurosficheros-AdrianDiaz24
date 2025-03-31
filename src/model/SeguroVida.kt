@@ -17,9 +17,6 @@ class SeguroVida(dniTitular: String, importe: Double, fechaNac: String,var nivel
         }
     }
 
-    override fun tipoSeguro(): String {
-        TODO("Not yet implemented")
-    }
 
 
 }

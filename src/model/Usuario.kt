@@ -1,5 +1,7 @@
 package model
 
+import data.IExportable
+
 class Usuario(val nombre: String, clave: String, val perfil: Perfil): IExportable {
 
     companion object{
