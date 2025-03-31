@@ -10,9 +10,7 @@ abstract class Seguro(val numPoliza: Int, private val dniTitular: String, protec
         require(dniTitular.matches(Regex("^[0-9]{8}+[A-Z]{1}$"))) {throw IllegalArgumentException("El DNI no cumple el formato basico")}
     }
 
-    open fun calcuarImporteAnioSiguiente(interes: Double):Double {
-        return importe * (1 + (interes / 100))
-    }
+    abstract fun calcuarImporteAnioSiguiente(interes: Double):Double
 
     fun tipoSeguro(): String {
         return this::class.simpleName?:"Desconocido"

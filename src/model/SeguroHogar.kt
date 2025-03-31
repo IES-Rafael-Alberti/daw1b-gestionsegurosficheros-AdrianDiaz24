@@ -3,7 +3,9 @@ package model
 class SeguroHogar: Seguro {
 
     companion object {
+
         var id = 10000
+
         private fun generarNumPoliza(): Int{
             return id++
         }
@@ -24,6 +26,8 @@ class SeguroHogar: Seguro {
             }
         }
 
+        val porcentajeIncrementosAnios = 0.02
+        val ciclosAniosIncremento = 5
     }
 
     private var metrosCuadrados: Int = 0
@@ -61,7 +65,14 @@ class SeguroHogar: Seguro {
         aniosConstruccion = aniosConstruccionIntroducido
     }
 
-
+    override fun calcuarImporteAnioSiguiente(interes: Double): Double {
+        var interes = interes
+        while (aniosConstruccion >= ciclosAniosIncremento){
+            interes += porcentajeIncrementosAnios
+            aniosConstruccion -= ciclosAniosIncremento
+        }
+        return importe * (1.0 + interes)
+    }
 
 }
 
