@@ -11,9 +11,9 @@ class SeguroVida(dniTitular: String, importe: Double, fechaNac: String,var nivel
 
     override fun calcuarImporteAnioSiguiente(interes: Double): Double {
         return when(nivelRiesgo) {
-            Riesgo.BAJO -> super.calcuarImporteAnioSiguiente(interes) * 1.02
-            Riesgo.MEDIO -> super.calcuarImporteAnioSiguiente(interes) * 1.05
-            Riesgo.ALTO -> super.calcuarImporteAnioSiguiente(interes) * 1.10
+            Riesgo.BAJO -> importe * (1.02 + interes)
+            Riesgo.MEDIO -> importe * (1.05 + interes)
+            Riesgo.ALTO -> importe * (1.10 + interes)
         }
     }
 

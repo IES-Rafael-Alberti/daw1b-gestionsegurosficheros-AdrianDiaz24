@@ -66,12 +66,20 @@ class SeguroHogar: Seguro {
     }
 
     override fun calcuarImporteAnioSiguiente(interes: Double): Double {
-        var interes = interes
+        var interes = interes/100
         while (aniosConstruccion >= ciclosAniosIncremento){
             interes += porcentajeIncrementosAnios
             aniosConstruccion -= ciclosAniosIncremento
         }
         return importe * (1.0 + interes)
+    }
+
+    override fun serializar(separador: String): String {
+        return super.serializar(separador) + "$separador$metrosCuadrados$separador$valorContenido$separador$direccion$separador$aniosConstruccion"
+    }
+
+    override fun toString(): String {
+        return super.toString() + ", metrosCuadrados=$metrosCuadrados, valorContenido=$valorContenido, direccion=$direccion, aniosConstruccion=$aniosConstruccion"
     }
 
 }

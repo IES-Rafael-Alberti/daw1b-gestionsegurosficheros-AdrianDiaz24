@@ -21,7 +21,7 @@ abstract class Seguro(val numPoliza: Int, private val dniTitular: String, protec
     }
 
     override fun toString(): String {
-        return "Seguro(numPoliza=$numPoliza, dniTitular=$dniTitular, importe=${importe.redondear(2)})"
+        return "${this::class.simpleName} - numPoliza=$numPoliza, dniTitular=$dniTitular, importe=${importe.redondear(2)}"
     }
 
     override fun hashCode(): Int {
