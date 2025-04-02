@@ -12,7 +12,7 @@ class SeguroAuto : Seguro {
 
         val porcentajeIncrementoPartes = 2
 
-        fun crearSeguro(datos: List<String>): SeguroAuto {
+        fun crearSeguroAuto(datos: List<String>): SeguroAuto {
             if (datos.size < 8) {throw IllegalArgumentException("**ERROR** Debes pasar una lista de String con los siguientes datos en este orden DNI del titular, Importe, Descripcion, Combustible, Tipo de auto, Tipo de cobertura, asistencia en carretera(true/false) y Nº de partes")}
             try {
                 return SeguroAuto(datos[0], datos[1].toDouble(), datos[2], datos[3], Auto.getAuto(datos[4]), Cobertura.getCobertura(datos[5]), datos[6].toBoolean(), datos[7].toInt())

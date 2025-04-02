@@ -15,7 +15,7 @@ class SeguroHogar: Seguro {
          *  Funcion para crear nuevos seguro de hogar
          *  @param datos List con que contenga los siguientes datos en forma de String DNI del titular, Importe, Metros Cuadrados, Valor Contenido, Direccion y Años de Construccion
          */
-        fun crearSeguro(datos: List<String>): SeguroHogar{
+        fun crearSeguroHogar(datos: List<String>): SeguroHogar{
             if (datos.size < 6) {throw IllegalArgumentException("**ERROR** Debes pasar una lista de String con los siguientes datos en este orden DNI del titular, Importe, Metros Cuadrados, Valor Contenido, Direccion y Años de Construccion")}
             try {
                 return SeguroHogar(datos[0], datos[1].toDouble(), datos[2].toInt(), datos[3].toDouble(), datos[4], datos[5].toInt())
