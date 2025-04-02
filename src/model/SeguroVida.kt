@@ -46,14 +46,10 @@ class SeguroVida: Seguro{
 
 
     override fun calcuarImporteAnioSiguiente(interes: Double): Double {
-        return when(nivelRiesgo) {
-            Riesgo.BAJO -> importe * (1.02 + (interes/100))
-            Riesgo.MEDIO -> importe * (1.05 + (interes/100))
-            Riesgo.ALTO -> importe * (1.10 + (interes/100))
-        }
+        return importe * (1 + (interes/100) + (nivelRiesgo.interesAplicado/100) + ((0.05/100) * calcularAños()))
     }
 
-    fun calcularAños(fechaNac: String): Int{
+    private fun calcularAños(): Int{
         val fechaActual =  LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString().split("/")
         val fechaNacDividida = fechaNac.split("/")
 
@@ -64,6 +60,14 @@ class SeguroVida: Seguro{
             años += 1
         }
         return  años
+    }
+
+    override fun serializar(separador: String): String {
+        return super.serializar(separador) + "$separador$fechaNac$separador$nivelRiesgo$separador$indemnizacion"
+    }
+
+    override fun toString(): String {
+        return super.toString() + ", fechaNac=$fechaNac, nivelRiesgo=$nivelRiesgo, indemnizacion=$indemnizacion"
     }
 
 }
