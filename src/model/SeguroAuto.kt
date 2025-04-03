@@ -79,7 +79,7 @@ class SeguroAuto : Seguro {
     }
 
     override fun serializar(separador: String): String {
-        return super.serializar(separador) + "$separador$descripcion$separador$combustible$separador$tipoAuto$separador$tipoCobertura$separador$asistenciaCarretera$separador$numPartes"
+        return super.serializar(separador) + "$separador$descripcion$separador$combustible$separador$tipoAuto$separador$tipoCobertura$separador$asistenciaCarretera$separador$numPartes$separador${tipoSeguro()}"
     }
 
     override fun toString(): String {

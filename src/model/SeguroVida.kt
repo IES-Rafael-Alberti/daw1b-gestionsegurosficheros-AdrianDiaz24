@@ -63,7 +63,7 @@ class SeguroVida: Seguro{
     }*/
 
     override fun serializar(separador: String): String {
-        return super.serializar(separador) + "$separador$fechaNac$separador$nivelRiesgo$separador$indemnizacion"
+        return super.serializar(separador) + "$separador$fechaNac$separador$nivelRiesgo$separador$indemnizacion$separador${tipoSeguro()}"
     }
 
     override fun toString(): String {

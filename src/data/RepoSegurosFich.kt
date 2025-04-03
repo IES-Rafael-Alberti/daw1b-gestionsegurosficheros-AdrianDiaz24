@@ -1,13 +1,32 @@
 package data
 
-import model.Seguro
-import model.SeguroAuto
-import model.SeguroHogar
-import model.SeguroVida
+import model.*
+import utils.IUtilFicheros
+import java.io.File
 
-class RepoSegurosFich: ICargarSegurosIniciales {
+class RepoSegurosFich(val rutaArchivo: String, val fich: IUtilFicheros): RepoSegurosMem(), ICargarSegurosIniciales {
+
     override fun cargarSeguros(mapa: Map<String, (List<String>) -> Seguro>): Boolean {
-        TODO("Not yet implemented")
+        val archivo = File(rutaArchivo)
+
+        if (archivo.exists() && archivo.isFile) {
+            val listaString  = archivo.readLines()
+
+            for (linea in listaString) {
+                val datos = linea.split(";")
+                val tipoSeguro = datos.last()
+                try {
+                    val constructorSeguro = mapa[tipoSeguro] ?: return false
+                    seguros.add(constructorSeguro(datos.dropLast(1)))
+                } catch (e: IllegalArgumentException) {
+                    println(e)
+                } catch (e: Exception) {
+                    println(e)
+                }
+            }
+            return true
+        }
+        return false
     }
 
     private fun actualizarContadores(seguros: List<Seguro>) {
@@ -19,6 +38,19 @@ class RepoSegurosFich: ICargarSegurosIniciales {
         if (maxHogar != null) SeguroHogar.id = maxHogar
         if (maxAuto != null) SeguroAuto.id = maxAuto
         if (maxVida != null) SeguroVida.id = maxVida
+    }
+
+    override fun agregar(seguro: Seguro): Boolean {
+        if (!super.agregar(seguro)){
+            return false
+        } else return fich.agregarLinea(rutaArchivo, seguro.serializar())
+    }
+
+    override fun eliminar(seguro: Seguro): Boolean {
+        if (fich.escribirArchivo(rutaArchivo, seguros.filter { it != seguro })) {
+            return super.eliminar(seguro)
+        }
+        return false
     }
 
 }

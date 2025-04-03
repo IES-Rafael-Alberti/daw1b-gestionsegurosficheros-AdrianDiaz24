@@ -75,7 +75,7 @@ class SeguroHogar: Seguro {
     }
 
     override fun serializar(separador: String): String {
-        return super.serializar(separador) + "$separador$metrosCuadrados$separador$valorContenido$separador$direccion$separador$aniosConstruccion"
+        return super.serializar(separador) + "$separador$metrosCuadrados$separador$valorContenido$separador$direccion$separador$aniosConstruccion$separador${tipoSeguro()}"
     }
 
     override fun toString(): String {
