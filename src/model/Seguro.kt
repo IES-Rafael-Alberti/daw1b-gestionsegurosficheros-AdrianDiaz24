@@ -1,6 +1,5 @@
 package model
 
-import data.IExportable
 import redondear
 
 abstract class Seguro(val numPoliza: Int, private val dniTitular: String, protected val importe: Double): IExportable {

@@ -1,7 +1,5 @@
 package model
 
-import data.IExportable
-
 class Usuario(val nombre: String, clave: String, val perfil: Perfil): IExportable {
 
     companion object{
@@ -31,9 +29,8 @@ class Usuario(val nombre: String, clave: String, val perfil: Perfil): IExportabl
         return "$nombre$separador$clave$separador$perfil"
     }
 
-    fun cambiarClave(nuevaClaveEncriptada: String): String{
+    fun cambiarClave(nuevaClaveEncriptada: String){
         clave = nuevaClaveEncriptada
-        return "Contraseña cambiada"
     }
 
 }
